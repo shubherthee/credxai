@@ -1,0 +1,764 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700;800&family=Lora:wght@500;600;700&display=swap');
+
+:root {
+    --navy: #081A33;
+    --navy-2: #0E2A4D;
+    --navy-3: #153E6F;
+    --gold: #B08D57;
+    --gold-2: #D9C29A;
+    --gold-soft: #F7F1E7;
+    --ink: #152033;
+    --muted: #667085;
+    --muted-2: #98A2B3;
+    --bg: #F4F7FB;
+    --card: #FFFFFF;
+    --soft: #F8FAFC;
+    --rule: #D8E1EC;
+    --green: #157347;
+    --green-bg: #EAF7F0;
+    --red: #B42318;
+    --red-bg: #FDECEC;
+    --amber: #B7791F;
+    --amber-bg: #FFF6E5;
+    --shadow: 0 18px 45px rgba(8, 26, 51, 0.08);
+    --shadow-soft: 0 10px 28px rgba(8, 26, 51, 0.06);
+}
+
+html, body, [class*="css"] {
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    color: var(--ink);
+}
+
+.stApp {
+    background:
+        radial-gradient(circle at top left, rgba(176,141,87,0.13), transparent 34%),
+        linear-gradient(180deg, #F7FAFD 0%, #EDF3F8 100%);
+}
+
+.main .block-container {
+    max-width: 1380px;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+/* Header */
+.bank-header {
+    background:
+        linear-gradient(135deg, rgba(8,26,51,0.98) 0%, rgba(14,42,77,0.98) 55%, rgba(21,62,111,0.96) 100%);
+    color: white;
+    padding: 1.35rem 2rem;
+    margin: -1rem -1rem 1.35rem -1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--gold);
+    box-shadow: var(--shadow-soft);
+}
+
+.brand-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.bank-logo {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.bank-subtitle {
+    font-size: 0.76rem;
+    opacity: 0.88;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.86);
+}
+
+.header-badge {
+    border: 1px solid rgba(217,194,154,0.5);
+    background: rgba(255,255,255,0.08);
+    color: #FFF8E8;
+    padding: 0.65rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* Page title */
+.page-heading {
+    margin: 0.4rem 0 1rem;
+}
+
+.overline {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.page-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: 0.12rem;
+}
+
+.page-subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+}
+
+/* Cards and sections */
+.metric-card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 0.9rem;
+    padding: 1rem;
+    min-height: 96px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: var(--gold);
+}
+
+.metric-green::before { background: var(--green); }
+.metric-red::before { background: var(--red); }
+.metric-blue::before { background: var(--navy-3); }
+.metric-amber::before { background: var(--amber); }
+
+.metric-value {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.15;
+}
+
+.metric-label {
+    font-size: 0.66rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    font-weight: 800;
+    margin-top: 0.35rem;
+}
+
+.report-section-title {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: white;
+    border-left: 5px solid var(--gold);
+    padding: 0.78rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    border-radius: 0.7rem;
+    box-shadow: 0 8px 20px rgba(8,26,51,0.08);
+}
+
+.section-subtitle {
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-top: 0.15rem;
+}
+
+/* Decision banners */
+.decision-approved,
+.decision-rejected {
+    border-radius: 0.85rem;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.decision-approved {
+    background: var(--green-bg);
+    border: 1px solid #B7E2C6;
+    border-left: 6px solid var(--green);
+}
+
+.decision-rejected {
+    background: var(--red-bg);
+    border: 1px solid #F2B8B5;
+    border-left: 6px solid var(--red);
+}
+
+.decision-title {
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+}
+
+.decision-copy {
+    margin-top: 0.25rem;
+    color: var(--ink);
+}
+
+/* Comparison */
+.comparison-card {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 1rem;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+    border: 1px solid var(--rule);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.comparison-label {
+    color: var(--muted);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+}
+
+.comparison-value {
+    color: var(--navy);
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-top: 0.22rem;
+}
+
+.match-badge {
+    display: inline-block;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 0.76rem;
+    margin-top: 0.2rem;
+}
+
+.match-good {
+    background: var(--green-bg);
+    color: var(--green);
+    border: 1px solid #B7E2C6;
+}
+
+.match-bad {
+    background: var(--red-bg);
+    color: var(--red);
+    border: 1px solid #F2B8B5;
+}
+
+/* Explanation and factors */
+.xai-box {
+    background: var(--soft);
+    border: 1px solid var(--rule);
+    border-left: 5px solid var(--gold);
+    border-radius: 0.85rem;
+    padding: 1rem 1.2rem;
+    line-height: 1.72;
+    font-size: 0.9rem;
+    color: var(--ink);
+    min-height: 280px;
+}
+
+.factor-risk,
+.factor-safe {
+    border-radius: 0.75rem;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.55rem;
+}
+
+.factor-risk {
+    background: var(--red-bg);
+    border: 1px solid #F2B8B5;
+    border-left: 5px solid var(--red);
+}
+
+.factor-safe {
+    background: var(--green-bg);
+    border: 1px solid #B7E2C6;
+    border-left: 5px solid var(--green);
+}
+
+.insight-box {
+    background: linear-gradient(135deg, var(--navy-2) 0%, var(--navy-3) 100%);
+    border-radius: 1rem;
+    padding: 1rem 1.1rem;
+    color: white;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 1rem;
+    border: 1px solid rgba(217,194,154,0.25);
+}
+
+.insight-box strong {
+    color: white;
+}
+
+/* Sidebar */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, var(--navy) 0%, #071527 100%) !important;
+}
+
+[data-testid="stSidebar"] * {
+    font-family: 'IBM Plex Sans', Arial, sans-serif !important;
+    color: rgba(255,255,255,0.88) !important;
+}
+
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: #FFFFFF !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+[data-testid="stSidebar"] .stAlert {
+    background: rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    border-radius: 0.75rem !important;
+}
+
+/* Buttons */
+.stButton > button {
+    font-family: 'IBM Plex Sans', Arial, sans-serif !important;
+    background: var(--navy) !important;
+    color: white !important;
+    border-radius: 0.75rem !important;
+    border: 1px solid var(--navy) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    padding: 0.75rem 1rem !important;
+    box-shadow: 0 8px 18px rgba(8,26,51,0.10);
+}
+
+.stButton > button:hover {
+    background: var(--navy-2) !important;
+    border-color: var(--gold) !important;
+}
+
+.stDownloadButton > button {
+    font-family: 'IBM Plex Sans', Arial, sans-serif !important;
+    border-radius: 0.75rem !important;
+    border: 1px solid var(--gold) !important;
+    color: var(--navy) !important;
+    background: var(--gold-soft) !important;
+    font-weight: 800 !important;
+}
+
+.stDownloadButton > button:hover {
+    background: var(--gold) !important;
+    color: white !important;
+}
+
+/* Inputs */
+label[data-testid="stWidgetLabel"] p {
+    color: var(--navy) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.03em;
+}
+
+[data-baseweb="select"] > div,
+[data-baseweb="input"] > div {
+    border-radius: 0.7rem !important;
+    border-color: var(--rule) !important;
+    background: white !important;
+}
+
+[data-baseweb="select"] > div:focus-within,
+[data-baseweb="input"] > div:focus-within {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 1px var(--gold) !important;
+}
+
+/* Native Streamlit tabs */
+.stTabs [data-baseweb="tab-list"] {
+    border-bottom: 2px solid var(--rule);
+    gap: 0.35rem;
+}
+
+.stTabs [data-baseweb="tab"] {
+    color: var(--muted) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    border-radius: 0.75rem 0.75rem 0 0 !important;
+    background: rgba(255,255,255,0.65) !important;
+}
+
+.stTabs [aria-selected="true"] {
+    color: white !important;
+    background: var(--navy) !important;
+    border-bottom: 3px solid var(--gold) !important;
+}
+
+/* Bordered containers */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    border-color: var(--rule) !important;
+    background: var(--card) !important;
+    border-radius: 1rem !important;
+    box-shadow: var(--shadow-soft);
+}
+
+.nav-shell [role="radiogroup"] label {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-shell [role="radiogroup"] input {
+    position: absolute !important;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0 !important;
+    cursor: pointer;
+}
+
+.risk-summary {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #FFFFFF;
+    border: 1px solid rgba(8, 26, 51, 0.08);
+}
+
+.risk-summary-title {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+}
+
+.risk-score {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--navy);
+}
+
+.risk-tier-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.risk-tier-pill.low {
+    background: rgba(21, 115, 61, 0.14);
+    color: var(--green);
+    border: 1px solid rgba(21, 115, 61, 0.24);
+}
+
+.risk-tier-pill.medium {
+    background: rgba(183, 121, 31, 0.14);
+    color: var(--amber);
+    border: 1px solid rgba(183, 121, 31, 0.24);
+}
+
+.risk-tier-pill.high {
+    background: rgba(180, 36, 24, 0.14);
+    color: var(--red);
+    border: 1px solid rgba(180, 36, 24, 0.24);
+}
+
+.risk-band {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+.risk-band-step {
+    border-radius: 0.8rem;
+    padding: 0.85rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+.risk-band-step.low {
+    background: var(--green);
+}
+
+.risk-band-step.medium {
+    background: var(--amber);
+}
+
+.risk-band-step.high {
+    background: var(--red);
+}
+
+.risk-band-step span {
+    display: block;
+    opacity: 0.9;
+    font-size: 0.68rem;
+    margin-top: 0.18rem;
+}
+
+.risk-detail {
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.6;
+}
+
+/* Dataframes */
+[data-testid="stDataFrame"] {
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    border: 1px solid var(--rule);
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+[data-testid="stDataFrameContainer"] th {
+    background: var(--navy) !important;
+    color: white !important;
+    font-weight: 800 !important;
+}
+
+.stCaption, .stCaption p {
+    color: var(--muted) !important;
+}
+
+hr {
+    border-color: var(--rule) !important;
+    margin: 1.5rem 0 !important;
+}
+
+/* White button-style top navigation */
+.nav-shell {
+    margin: 0.25rem 0 1.1rem 0;
+}
+.nav-shell [role="radiogroup"] {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.nav-shell [role="radiogroup"] label {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: linear-gradient(135deg, rgba(8, 26, 51, 0.85) 0%, rgba(14, 42, 77, 0.85) 100%) !important;
+    border: 1px solid rgba(217, 194, 154, 0.4) !important;
+    border-radius: 999px !important;
+    padding: 0.72rem 1.15rem !important;
+    min-width: 210px;
+    box-shadow: 0 10px 24px rgba(8, 26, 51, 0.12);
+    transition: all 0.18s ease;
+}
+.nav-shell [role="radiogroup"] label:hover {
+    border-color: rgba(217, 194, 154, 0.8) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(8, 26, 51, 0.18);
+}
+.nav-shell [role="radiogroup"] label:has(input:checked) {
+    background: linear-gradient(135deg, rgba(8, 26, 51, 0.95) 0%, rgba(14, 42, 77, 0.95) 100%) !important;
+    border-color: var(--gold) !important;
+    box-shadow: inset 0 -3px 0 var(--gold), 0 14px 32px rgba(8, 26, 51, 0.18);
+}
+.nav-shell [role="radiogroup"] label p {
+    color: #FFF8E8 !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.78rem !important;
+}
+.nav-shell [role="radiogroup"] input {
+    position: absolute !important;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0 !important;
+    cursor: pointer;
+}
+
+/* Loan History Analyzer row grid */
+.history-grid {
+    display: grid;
+    grid-template-columns: 0.65fr 0.95fr 0.85fr 0.9fr 0.8fr 0.85fr 0.75fr 0.75fr 1.5fr 0.8fr;
+    gap: 0.65rem;
+    align-items: center;
+}
+.history-grid-head {
+    background: var(--navy);
+    color: white;
+    border-radius: 0.75rem;
+    padding: 0.75rem 0.85rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 0.45rem;
+}
+.history-row {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 0.75rem;
+    padding: 0.7rem 0.85rem;
+    margin-top: 0.42rem;
+    box-shadow: 0 8px 20px rgba(8, 26, 51, 0.045);
+    font-size: 0.86rem;
+}
+.history-row:hover {
+    border-color: rgba(176, 141, 87, 0.65);
+    box-shadow: 0 12px 26px rgba(8, 26, 51, 0.08);
+}
+.history-divider {
+    height: 1px;
+    background: rgba(216, 225, 236, 0.75);
+    margin: 0.28rem 0 0.32rem 0;
+}
+/* =========================================
+   FIX CROPPED RISK GAUGE
+========================================= */
+
+.element-container:has(canvas) {
+    overflow: visible !important;
+}
+
+.stPlotlyChart,
+.stPyplot,
+[data-testid="stImage"] {
+    overflow: visible !important;
+}
+
+/* risk gauge wrapper */
+.risk-gauge-wrapper {
+    background: #FFFFFF;
+    border: 1px solid rgba(8, 26, 51, 0.08);
+    border-radius: 1rem;
+    padding: 1.2rem 1rem 0.6rem 1rem;
+    overflow: visible !important;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* matplotlib figure fix */
+.risk-gauge-wrapper img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+/* streamlit pyplot container */
+[data-testid="stPyplotChart"] {
+    overflow: visible !important;
+    padding-top: 0.5rem !important;
+}
+
+/* remove clipping */
+.css-1kyxreq,
+.css-1v0mbdj,
+.css-1r6slb0 {
+    overflow: visible !important;
+}
+
+/* make gauge slightly smaller */
+.gauge-scale {
+    transform: scale(0.5);
+    transform-origin: center top;
+}
+
+/* responsive */
+@media (max-width: 1200px) {
+    .risk-gauge-wrapper {
+        min-height: 360px;
+    }
+
+    .gauge-scale {
+        transform: scale(0.8);
+    }
+}
+/* =========================================
+   FIX TOP NAVIGATION AS WHITE BUTTONS
+========================================= */
+
+.nav-shell {
+    margin: 0.4rem 0 1.4rem 0;
+}
+
+/* hide the "Navigation" label area if any */
+.nav-shell > div:first-child {
+    gap: 0.8rem !important;
+}
+
+/* radio group layout */
+.nav-shell div[role="radiogroup"] {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.85rem !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+}
+
+/* each option card */
+.nav-shell div[role="radiogroup"] label {
+    background: #FFFFFF !important;
+    border: 1px solid var(--rule) !important;
+    border-radius: 999px !important;
+    padding: 0.75rem 1.25rem !important;
+    min-width: 230px !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 10px 24px rgba(8, 26, 51, 0.08) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* hide radio circles */
+.nav-shell div[role="radiogroup"] label > div:first-child {
+    display: none !important;
+}
+
+/* text */
+.nav-shell div[role="radiogroup"] label p {
+    color: var(--navy) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    font-size: 0.78rem !important;
+    margin: 0 !important;
+}
+
+/* hover */
+.nav-shell div[role="radiogroup"] label:hover {
+    border-color: var(--gold) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(8, 26, 51, 0.14) !important;
+}
+
+/* selected button */
+.nav-shell div[role="radiogroup"] label:has(input:checked) {
+    background: #FFFFFF !important;
+    border: 2px solid var(--gold) !important;
+    box-shadow: inset 0 -4px 0 var(--gold), 0 14px 32px rgba(8, 26, 51, 0.13) !important;
+}

@@ -1,0 +1,2 @@
+Model,Method,Runs,SRA_Overall,CV_Overall,Avg_Hybrid_Time(s),Top5_Features
+LightGBM,Hybrid,20,0.206062030075188,0.8859552784940551,0.7605395913124084,"last_pymnt_amnt, loan_amnt, int_rate, installment, dti"

@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+scikit-learn
+lightgbm
+shap
+lime
+matplotlib
+python-dotenv
+requests

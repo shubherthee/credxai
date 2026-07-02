@@ -1,0 +1,11 @@
+Model,Feature,Selected_Count,Selected_Rate
+LightGBM,loan_amnt,20,1.0
+LightGBM,last_pymnt_amnt,20,1.0
+LightGBM,avg_cur_bal,3,0.15
+LightGBM,int_rate,20,1.0
+LightGBM,grade,0,0.0
+LightGBM,installment,20,1.0
+LightGBM,annual_inc,0,0.0
+LightGBM,dti,8,0.4
+LightGBM,revol_util,7,0.35
+LightGBM,revol_bal,2,0.1
