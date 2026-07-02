@@ -22,6 +22,11 @@
     --amber-bg: #FFF6E5;
     --shadow: 0 18px 45px rgba(8, 26, 51, 0.08);
     --shadow-soft: 0 10px 28px rgba(8, 26, 51, 0.06);
+    --app-bg-1: #F7FAFD;
+    --app-bg-2: #EDF3F8;
+    --white-text: #FFFFFF;
+    --tab-bg: rgba(255,255,255,0.65);
+
 }
 
 html, body, [class*="css"] {
@@ -32,7 +37,7 @@ html, body, [class*="css"] {
 .stApp {
     background:
         radial-gradient(circle at top left, rgba(176,141,87,0.13), transparent 34%),
-        linear-gradient(180deg, #F7FAFD 0%, #EDF3F8 100%);
+        linear-gradient(180deg, var(--app-bg-1) 0%, var(--app-bg-2) 100%);
 }
 
 .main .block-container {
@@ -45,7 +50,7 @@ html, body, [class*="css"] {
 .bank-header {
     background:
         linear-gradient(135deg, rgba(8,26,51,0.98) 0%, rgba(14,42,77,0.98) 55%, rgba(21,62,111,0.96) 100%);
-    color: white;
+    color: var(--white-text);
     padding: 1.35rem 2rem;
     margin: -1rem -1rem 1.35rem -1rem;
     display: flex;
@@ -80,7 +85,7 @@ html, body, [class*="css"] {
 .header-badge {
     border: 1px solid rgba(217,194,154,0.5);
     background: rgba(255,255,255,0.08);
-    color: #FFF8E8;
+    color: var(--white-text);
     padding: 0.65rem 0.9rem;
     border-radius: 999px;
     font-size: 0.72rem;
@@ -160,7 +165,7 @@ html, body, [class*="css"] {
 
 .report-section-title {
     background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
-    color: white;
+    color: var(--white-text);
     border-left: 5px solid var(--gold);
     padding: 0.78rem 1rem;
     font-size: 0.78rem;
@@ -220,7 +225,7 @@ html, body, [class*="css"] {
     display: grid;
     grid-template-columns: repeat(3, minmax(0,1fr));
     gap: 1rem;
-    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+    background: linear-gradient(135deg, var(--card) 0%, var(--soft) 100%);
     border: 1px solid var(--rule);
     border-radius: 1rem;
     padding: 1rem;
@@ -300,14 +305,14 @@ html, body, [class*="css"] {
     background: linear-gradient(135deg, var(--navy-2) 0%, var(--navy-3) 100%);
     border-radius: 1rem;
     padding: 1rem 1.1rem;
-    color: white;
+    color: var(--white-text);
     box-shadow: var(--shadow-soft);
     margin-bottom: 1rem;
     border: 1px solid rgba(217,194,154,0.25);
 }
 
 .insight-box strong {
-    color: white;
+    color: var(--white-text);
 }
 
 /* Sidebar */
@@ -317,13 +322,13 @@ html, body, [class*="css"] {
 
 [data-testid="stSidebar"] * {
     font-family: 'IBM Plex Sans', Arial, sans-serif !important;
-    color: rgba(255,255,255,0.88) !important;
+    color: var(--white-text) !important;
 }
 
 [data-testid="stSidebar"] h1,
 [data-testid="stSidebar"] h2,
 [data-testid="stSidebar"] h3 {
-    color: #FFFFFF !important;
+    color: var(--white-text) !important;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -338,7 +343,7 @@ html, body, [class*="css"] {
 .stButton > button {
     font-family: 'IBM Plex Sans', Arial, sans-serif !important;
     background: var(--navy) !important;
-    color: white !important;
+    color: var(--white-text) !important;
     border-radius: 0.75rem !important;
     border: 1px solid var(--navy) !important;
     font-weight: 800 !important;
@@ -364,7 +369,7 @@ html, body, [class*="css"] {
 
 .stDownloadButton > button:hover {
     background: var(--gold) !important;
-    color: white !important;
+    color: var(--white-text) !important;
 }
 
 /* Inputs */
@@ -399,11 +404,11 @@ label[data-testid="stWidgetLabel"] p {
     letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
     border-radius: 0.75rem 0.75rem 0 0 !important;
-    background: rgba(255,255,255,0.65) !important;
+    background: var(--tab-bg) !important;
 }
 
 .stTabs [aria-selected="true"] {
-    color: white !important;
+    color: var(--white-text) !important;
     background: var(--navy) !important;
     border-bottom: 3px solid var(--gold) !important;
 }
@@ -437,7 +442,7 @@ label[data-testid="stWidgetLabel"] p {
     gap: 1rem;
     padding: 1rem;
     border-radius: 1rem;
-    background: #FFFFFF;
+    background: var(--card);
     border: 1px solid rgba(8, 26, 51, 0.08);
 }
 
@@ -498,7 +503,7 @@ label[data-testid="stWidgetLabel"] p {
     font-weight: 700;
     text-align: center;
     line-height: 1.2;
-    color: #FFFFFF;
+    color: var(--white-text);
 }
 
 .risk-band-step.low {
@@ -536,7 +541,7 @@ label[data-testid="stWidgetLabel"] p {
 
 [data-testid="stDataFrameContainer"] th {
     background: var(--navy) !important;
-    color: white !important;
+    color: var(--white-text) !important;
     font-weight: 800 !important;
 }
 
@@ -607,7 +612,7 @@ hr {
 }
 .history-grid-head {
     background: var(--navy);
-    color: white;
+    color: var(--white-text);
     border-radius: 0.75rem;
     padding: 0.75rem 0.85rem;
     font-size: 0.72rem;
@@ -617,7 +622,7 @@ hr {
     margin-bottom: 0.45rem;
 }
 .history-row {
-    background: white;
+    background: var(--card);
     border: 1px solid var(--rule);
     border-radius: 0.75rem;
     padding: 0.7rem 0.85rem;
@@ -650,7 +655,7 @@ hr {
 
 /* risk gauge wrapper */
 .risk-gauge-wrapper {
-    background: #FFFFFF;
+    background: var(--card);
     border: 1px solid rgba(8, 26, 51, 0.08);
     border-radius: 1rem;
     padding: 1.2rem 1rem 0.6rem 1rem;
@@ -721,7 +726,7 @@ hr {
 
 /* each option card */
 .nav-shell div[role="radiogroup"] label {
-    background: #FFFFFF !important;
+    background: var(--card) !important;
     border: 1px solid var(--rule) !important;
     border-radius: 999px !important;
     padding: 0.75rem 1.25rem !important;
@@ -758,7 +763,81 @@ hr {
 
 /* selected button */
 .nav-shell div[role="radiogroup"] label:has(input:checked) {
-    background: #FFFFFF !important;
+    background: var(--card) !important;
     border: 2px solid var(--gold) !important;
     box-shadow: inset 0 -4px 0 var(--gold), 0 14px 32px rgba(8, 26, 51, 0.13) !important;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --navy: #E2E8F0;
+        --navy-2: #CBD5E1;
+        --navy-3: #94A3B8;
+        --gold: #D9C29A;
+        --gold-2: #B08D57;
+        --gold-soft: #1E293B;
+        --ink: #F8FAFC;
+        --muted: #94A3B8;
+        --muted-2: #64748B;
+        --bg: #0F172A;
+        --card: #1E293B;
+        --soft: #334155;
+        --rule: #475569;
+        --app-bg-1: #0F172A;
+        --app-bg-2: #020617;
+        --white-text: #0F172A; /* For elements that used white text on dark backgrounds, wait, if navy becomes light, text on it should be dark! */
+        --tab-bg: rgba(30,41,59,0.85);
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+        --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.4);
+    }
+    
+    .bank-header {
+        background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+        border-bottom: 4px solid var(--gold);
+    }
+    .header-badge, .bank-logo, .bank-subtitle {
+        color: #F8FAFC !important;
+    }
+    .report-section-title {
+        background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+        color: #F8FAFC;
+    }
+    .insight-box {
+        background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+        color: #F8FAFC;
+    }
+    .insight-box strong {
+        color: #F8FAFC;
+    }
+    .stButton > button {
+        color: #0F172A !important;
+    }
+    .stDownloadButton > button:hover {
+        color: #0F172A !important;
+    }
+    .nav-shell [role="radiogroup"] label p {
+        color: #F8FAFC !important;
+    }
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%) !important;
+    }
+    [data-testid="stSidebar"] * {
+        color: #F8FAFC !important;
+    }
+    [data-baseweb="select"] > div,
+    [data-baseweb="input"] > div {
+        background: var(--card) !important;
+        color: var(--ink) !important;
+    }
+    input, div[data-baseweb="select"] span {
+        color: var(--ink) !important;
+    }
+    .history-grid-head {
+        color: #0F172A !important;
+    }
+    .risk-band-step {
+        color: #0F172A !important;
+    }
+    [data-testid="stDataFrameContainer"] th {
+        color: #0F172A !important;
+    }
 }
