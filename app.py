@@ -515,7 +515,7 @@ def generate_bank_explanation(decision, risk_score, threshold, hybrid_vec, selec
     repayment_years, total_repayment = calculate_repayment_years(input_data)
 
     prompt = f"""
-Generate a professional internal bank credit analyst explanation for a loan application.
+Act as a professional internal bank credit analyst writing an explanation for a loan application.
 
 Decision: {decision}
 Risk Score: {risk_score:.1%}
@@ -548,7 +548,9 @@ Write using these headings:
 4. Mitigating Factors
 5. Recommended Action
 
-Use formal banking language. Mention model-supported evidence, but do not mention SHAP, LIME, LightGBM, or technical contribution values directly.
+Rules:
+- Use formal banking language. Mention model-supported evidence, but do not mention SHAP, LIME, LightGBM, or technical contribution values directly.
+- DO NOT output conversational filler like "Here is the explanation...". Output ONLY the report starting with the first heading.
 """
     return call_openrouter_api(prompt)
 
