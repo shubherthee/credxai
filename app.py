@@ -284,35 +284,6 @@ def build_and_train_model(db_path: str):
     return model, scaler, X_train_scaled, y_train, sample_df, dataset_info
 
 
-def get_primary_reason_from_row(row: pd.Series, decision: str) -> str:
-    grade_num = int(row["grade"])
-
-    if decision == "Rejected":
-        rules = [
-            ("Low credit grade", grade_num >= 5),
-            ("High debt-to-income ratio", row["dti"] > 25),
-            ("High revolving utilization", row["revol_util"] > 75),
-            ("Low income relative to loan amount", row["annual_inc"] < 40000),
-            ("High interest rate", row["int_rate"] > 20),
-            ("High revolving balance", row["revol_bal"] > 30000),
-        ]
-    else:
-        rules = [
-            ("Good credit grade", grade_num <= 3),
-            ("Low debt-to-income ratio", row["dti"] <= 20),
-            ("Moderate revolving utilization", row["revol_util"] <= 50),
-            ("Stable annual income", row["annual_inc"] >= 60000),
-            ("Lower interest rate", row["int_rate"] <= 15),
-            ("Recent payment activity", row["last_pymnt_amnt"] > 500),
-        ]
-
-    for reason, condition in rules:
-        if condition:
-            return reason
-
-    return "Model-estimated default risk" if decision == "Rejected" else "Model-estimated acceptable risk"
-
-
 @st.cache_data(show_spinner=False)
 def generate_decision_log_from_csv_sample_cached(sample_df: pd.DataFrame, threshold: float) -> pd.DataFrame:
     # This wrapper is not used because model and scaler are not hashable.
@@ -331,9 +302,22 @@ def generate_decision_log_from_csv_sample(sample_df: pd.DataFrame, model, scaler
     risk_scores = model.predict_proba(X_sample_scaled)[:, 1]
     decisions = np.where(risk_scores <= threshold, "Approved", "Rejected")
 
+    import shap
+    explainer = shap.TreeExplainer(model)
+    raw_shap = explainer.shap_values(X_sample_scaled)
+    shap_vals = _extract_shap_array(raw_shap)
+
     rows = []
     for i, (_, row) in enumerate(sample_df.iterrows()):
         decision = decisions[i]
+        row_shap = shap_vals[i]
+        
+        if decision == "Rejected":
+            top_feat_idx = np.argmax(row_shap)
+            reason = f"Risk: {FEATURE_LABELS[FEATURES[top_feat_idx]]}"
+        else:
+            top_feat_idx = np.argmin(row_shap)
+            reason = f"Strength: {FEATURE_LABELS[FEATURES[top_feat_idx]]}"
 
         rows.append(
             {
@@ -352,7 +336,7 @@ def generate_decision_log_from_csv_sample(sample_df: pd.DataFrame, model, scaler
                 "actual_status": "Fully Paid" if int(row[TARGET]) == 0 else "Charged Off",
                 "risk_score": float(risk_scores[i]),
                 "decision": decision,
-                "primary_reason": get_primary_reason_from_row(row, decision),
+                "primary_reason": reason,
             }
         )
 
@@ -926,8 +910,16 @@ if current_page == "Loan History Analyzer":
                 metric_card(selected_history["grade"], "Credit Grade", "blue")
             with a4:
                 metric_card(f"RM {selected_history['loan_amnt']:,.0f}", "Loan Amount", "neutral")
+            
+            if replay_decision == "Rejected":
+                top_idx = np.argmax(replay_hybrid_vec)
+                dyn_reason = f"Risk: {FEATURE_LABELS[FEATURES[top_idx]]}"
+            else:
+                top_idx = np.argmin(replay_hybrid_vec)
+                dyn_reason = f"Strength: {FEATURE_LABELS[FEATURES[top_idx]]}"
+
             with a5:
-                metric_card(selected_history["primary_reason"], "Primary Reason", "neutral")
+                metric_card(dyn_reason, "Primary Reason", "neutral")
 
             st.markdown("#### Key Hybrid XAI Factors")
             factor_col1, factor_col2 = st.columns(2, gap="large")
